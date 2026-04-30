@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ColorCraft - Professional Color Tools</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Animated Background -->
+  <div class="animated-bg">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="noise-overlay"></div>
+  </div>
+
+  <!-- Mobile Menu Button -->
+  <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M3 12h18M3 6h18M3 18h18"/>
+    </svg>
+  </button>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5">
+          <circle cx="12" cy="12" r="10"/>
+          <circle cx="12" cy="12" r="4"/>
+        </svg>
+      </div>
+      <span class="sidebar-title">ColorCraft</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <!-- Theme Toggle -->
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <div class="theme-toggle-track">
+          <div class="theme-toggle-thumb"></div>
+        </div>
+        <span class="theme-toggle-label">Light Mode</span>
+      </button>
+
+      <div class="nav-item active" data-page="home" role="button" tabindex="0">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"/>
+          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+        <span class="nav-label">Home</span>
+      </div>
+
+      <div class="nav-item" data-page="mode" role="button" tabindex="0">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+        <span class="nav-label">Mode Toggle</span>
+      </div>
+
+      <div class="nav-item" data-page="image" role="button" tabindex="0">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+          <circle cx="8.5" cy="8.5" r="1.5"/>
+          <polyline points="21 15 16 10 5 21"/>
+        </svg>
+        <span class="nav-label">Image Picker</span>
+      </div>
+
+      <div class="nav-item" data-page="eyedropper" role="button" tabindex="0">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20.59 4.41a2 2 0 0 1 0 2.83l-1.17 1.17-4.24-4.24 1.17-1.17a2 2 0 0 1 2.83 0l1.41 1.41zM4 20l4.24-4.24 4.24 4.24L8 24l-4-4z"/>
+          <path d="M15.18 8.59L8.59 15.18"/>
+        </svg>
+        <span class="nav-label">Eyedropper</span>
+      </div>
+
+      <div class="nav-item" data-page="palette" role="button" tabindex="0">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="13.5" cy="6.5" r="2.5"/>
+          <circle cx="19" cy="13" r="2.5"/>
+          <circle cx="16" cy="20" r="2.5"/>
+          <circle cx="8" cy="20" r="2.5"/>
+          <circle cx="5" cy="13" r="2.5"/>
+          <circle cx="6.5" cy="6.5" r="2.5"/>
+        </svg>
+        <span class="nav-label">Palette Generator</span>
+      </div>
+
+      <div class="nav-item" data-page="contrast" role="button" tabindex="0">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 2a10 10 0 0 1 0 20"/>
+        </svg>
+        <span class="nav-label">Contrast Checker</span>
+      </div>
+
+      <div class="nav-item" data-page="games" role="button" tabindex="0">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="6" width="20" height="12" rx="2"/>
+          <path d="M6 12h4M8 10v4M15 11h.01M18 13h.01"/>
+        </svg>
+        <span class="nav-label">Fun Mode</span>
+      </div>
+
+      <div class="nav-item" data-page="saved" role="button" tabindex="0">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+        </svg>
+        <span class="nav-label">Saved Colors</span>
+      </div>
+    </nav>
+
+    <div class="sidebar-toggle">
+      <button class="toggle-btn" id="toggleSidebar" aria-label="Collapse sidebar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+        <span class="toggle-text">Collapse</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content" id="mainContent">
+    
+    <!-- HOME PAGE - RGB Picker -->
+    <div class="page active" id="page-home">
+      <div class="max-w-4xl mx-auto">
+        <header class="mb-8">
+          <h1 class="text-4xl font-bold mb-2" style="font-family: 'Space Grotesk'">RGB Color Picker</h1>
+          <p class="text-lg" style="color: var(--fg-muted)">Create your perfect color with precision controls</p>
+        </header>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+          <div class="card">
+            <div class="color-preview" id="colorPreview" style="background: rgb(100, 149, 237)"></div>
+            
+            <div class="color-values" id="colorValues">
+              <div class="color-value-item">
+                <div>
+                  <label>HEX</label>
+                  <div class="value" id="hexValue">#6495ED</div>
+                </div>
+                <button class="copy-btn" data-copy="hex" aria-label="Copy HEX value">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                  </svg>
+                </button>
+              </div>
+              <div class="color-value-item">
+                <div>
+                  <label>RGB</label>
+                  <div class="value" id="rgbValue">rgb(100, 149, 237)</div>
+                </div>
+                <button class="copy-btn" data-copy="rgb" aria-label="Copy RGB value">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                  </svg>
+                </button>
+              </div>
+              <div class="color-value-item">
+                <div>
+                  <label>RGBA</label>
+                  <div class="value" id="rgbaValue">rgba(100, 149, 237, 1)</div>
+                </div>
+                <button class="copy-btn" data-copy="rgba" aria-label="Copy RGBA value">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                  </svg>
+                </button>
+              </div>
+              <div class="color-value-item">
+                <div>
+                  <label>HSL</label>
+                  <div class="value" id="hslValue">hsl(219, 79%, 66%)</div>
+                </div>
+                <button class="copy-btn" data-copy="hsl" aria-label="Copy HSL value">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="slider-container">
+              <div class="slider-label">
+                <span>Red</span>
+                <span class="slider-value" id="redValue">100</span>
+              </div>
+              <input type="range" min="0" max="255" value="100" class="slider-red" id="redSlider">
+            </div>
+
+            <div class="slider-container">
+              <div class="slider-label">
+                <span>Green</span>
+                <span class="slider-value" id="greenValue">149</span>
+              </div>
+              <input type="range" min="0" max="255" value="149" class="slider-green" id="greenSlider">
+            </div>
+
+            <div class="slider-container">
+              <div class="slider-label">
+                <span>Blue</span>
+                <span class="slider-value" id="blueValue">237</span>
+              </div>
+              <input type="range" min="0" max="255" value="237" class="slider-blue" id="blueSlider">
+            </div>
+
+            <div class="mt-6">
+              <button class="btn btn-primary w-full" id="saveColorBtn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+                </svg>
+                Save Color
+              </button>
+            </div>
+
+            <div class="mt-6">
+              <h4 class="text-sm font-medium mb-3" style="color: var(--fg-muted)">Recent Colors</h4>
+              <div class="recent-colors" id="recentColors"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODE TOGGLE PAGE -->
+    <div class="page" id="page-mode">
+      <div class="max-w-4xl mx-auto">
+        <header class="mb-8">
+          <h1 class="text-4xl font-bold mb-2" style="font-family: 'Space Grotesk'">Color Mode Toggle</h1>
+          <p class="text-lg" style="color: var(--fg-muted)">Switch between RGB, HSL, and CMYK color modes</p>
+        </header>
+
+        <div class="card">
+          <div class="tabs" role="tablist">
+            <button class="tab active" data-mode="rgb" role="tab" aria-selected="true">RGB</button>
+            <button class="tab" data-mode="hsl" role="tab" aria-selected="false">HSL</button>
+            <button class="tab" data-mode="cmyk" role="tab" aria-selected="false">CMYK</button>
+          </div>
+
+          <div class="grid lg:grid-cols-2 gap-8">
+            <div>
+              <div class="color-preview" id="modePreview" style="background: rgb(100, 149, 237)"></div>
+            </div>
+
+            <div id="modeControls">
+              <!-- RGB Controls -->
+              <div id="rgbControls">
+                <div class="slider-container">
+                  <div class="slider-label">
+                    <span>Red</span>
+                    <span class="slider-value" id="modeRed">100</span>
+                  </div>
+                  <input type="range" min="0" max="255" value="100" class="slider-red" id="modeRedSlider">
+                </div>
+                <div class="slider-container">
+                  <div class="slider-label">
+                    <span>Green</span>
+                    <span class="slider-value" id="modeGreen">149</span>
+                  </div>
+                  <input type="range" min="0" max="255" value="149" class="slider-green" id="modeGreenSlider">
+                </div>
+                <div class="slider-container">
+                  <div class="slider-label">
+                    <span>Blue</span>
+                    <span class="slider-value" id="modeBlue">237</span>
+                  </div>
+                  <input type="range" min="0" max="255" value="237" class="slider-blue" id="modeBlueSlider">
+                </div>
+              </div>
+
+              <!-- HSL Controls -->
+              <div id="hslControls" style="display: none;">
+                <div class="slider-container">
+                  <div class="slider-label">
+                    <span>Hue</span>
+                    <span class="slider-value" id="modeHue">219</span>
+                  </div>
+                  <input type="range" min="0" max="360" value="219" class="slider-hue" id="modeHueSlider">
+                </div>
+                <div class="slider-container">
+                  <div class="slider-label">
+                    <span>Saturation</span>
+                    <span class="slider-value" id="modeSat">79%</span>
+                  </div>
+                  <input type="range" min="0" max="100" value="79" class="slider-sat" id="modeSatSlider">
+                </div>
+                <div class="slider-container">
+                  <div class="slider-label">
+                    <span>Lightness</span>
+                    <span class="slider-value" id="modeLight">66%</span>
+                  </div>
+                  <input type="range" min="0" max="100" value="66" class="slider-light" id="modeLightSlider">
+                </div>
+              </div>
+
+              <!-- CMYK Controls -->
+              <div id="cmykControls" style="display: none;">
+                <div class="slider-container">
+                  <div class="slider-label">
+                    <span>Cyan</span>
+                    <span class="slider-value" id="modeCyan">58%</span>
+                  </div>
+                  <input type="range" min="0" max="100" value="58" class="slider-cyan" id="modeCyanSlider">
+                </div>
+                <div class="slider-container">
+                  <div class="slider-label">
+                    <span>Magenta</span>
+                    <span class="slider-value" id="modeMagenta">37%</span>
+                  </div>
+                  <input type="range" min="0" max="100" value="37" class="slider-magenta" id="modeMagentaSlider">
+                </div>
+                <div class="slider-container">
+                  <div class="slider-label">
+                    <span>Yellow</span>
+                    <span class="slider-value" id="modeYellow">0%</span>
+                  </div>
+                  <input type="range" min="0" max="100" value="0" class="slider-yellow" id="modeYellowSlider">
+                </div>
+                <div class="slider-container">
+                  <div class="slider-label">
+                    <span>Key (Black)</span>
+                    <span class="slider-value" id="modeKey">7%</span>
+                  </div>
+                  <input type="range" min="0" max="100" value="7" class="slider-key" id="modeKeySlider">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="color-values mt-6">
+            <div class="color-value-item">
+              <div>
+                <label>RGB</label>
+                <div class="value" id="modeRgbValue">rgb(100, 149, 237)</div>
+              </div>
+              <button class="copy-btn" data-copy="modeRgb" aria-label="Copy RGB">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                </svg>
+              </button>
+            </div>
+            <div class="color-value-item">
+              <div>
+                <label>HSL</label>
+                <div class="value" id="modeHslValue">hsl(219, 79%, 66%)</div>
+              </div>
+              <button class="copy-btn" data-copy="modeHsl" aria-label="Copy HSL">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                </svg>
+              </button>
+            </div>
+            <div class="color-value-item">
+              <div>
+                <label>CMYK</label>
+                <div class="value" id="modeCmykValue">cmyk(58%, 37%, 0%, 7%)</div>
+              </div>
+              <button class="copy-btn" data-copy="modeCmyk" aria-label="Copy CMYK">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IMAGE PICKER PAGE -->
+    <div class="page" id="page-image">
+      <div class="max-w-6xl mx-auto">
+        <header class="mb-8">
+          <h1 class="text-4xl font-bold mb-2" style="font-family: 'Space Grotesk'">Image Color Picker</h1>
+          <p class="text-lg" style="color: var(--fg-muted)">Extract colors from any image with live hover detection</p>
+        </header>
+
+        <div class="image-picker-layout">
+          <div class="card">
+            <div class="drop-zone" id="dropZone">
+              <svg class="drop-zone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                <circle cx="8.5" cy="8.5" r="1.5"/>
+                <polyline points="21 15 16 10 5 21"/>
+              </svg>
+              <h3 class="text-xl font-semibold mb-2">Drop your image here</h3>
+              <p style="color: var(--fg-muted)">or click to browse</p>
+              <input type="file" id="imageInput" accept="image/*" hidden>
+            </div>
+
+            <div id="imagePreviewContainer" style="display: none;" class="mt-6">
+              <div class="image-container">
+                <img id="imagePreview" crossorigin="anonymous">
+                <div class="hover-cursor" id="hoverCursor"></div>
+              </div>
+              <p class="text-sm mt-3" style="color: var(--fg-muted)">Move mouse over image to detect colors. Click to lock color.</p>
+            </div>
+
+            <div id="extractedColors" style="display: none;" class="mt-6">
+              <h3 class="text-lg font-semibold mb-4">Extracted Palette</h3>
+              <div class="extracted-palette" id="extractedPalette"></div>
+            </div>
+          </div>
+
+          <!-- Side Panel -->
+          <div class="side-panel">
+            <h3 class="text-lg font-semibold mb-4">Live Color Preview</h3>
+            <div class="color-preview-large" id="liveColorPreview" style="background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2))"></div>
+            
+            <div class="color-info-grid">
+              <div class="color-info-row">
+                <div>
+                  <label>HEX</label>
+                  <div class="value" id="liveHexValue">--</div>
+                </div>
+                <button class="copy-btn" id="copyLiveHex" aria-label="Copy HEX">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                  </svg>
+                </button>
+              </div>
+              <div class="color-info-row">
+                <div>
+                  <label>RGB</label>
+                  <div class="value" id="liveRgbValue">--</div>
+                </div>
+                <button class="copy-btn" id="copyLiveRgb" aria-label="Copy RGB">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <button class="btn btn-primary w-full" id="saveLiveColor" disabled>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+                </svg>
+                Save Color
+              </button>
+            </div>
+
+            <div class="color-history">
+              <div class="color-history-title">Color History</div>
+              <div class="color-history-list" id="imageColorHistory"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EYEDROPPER PAGE -->
+    <div class="page" id="page-eyedropper">
+      <div class="max-w-4xl mx-auto">
+        <header class="mb-8">
+          <h1 class="text-4xl font-bold mb-2" style="font-family: 'Space Grotesk'">Eyedropper Tool</h1>
+          <p class="text-lg" style="color: var(--fg-muted)">Pick colors from anywhere on your screen</p>
+        </header>
+
+        <div class="card text-center">
+          <div id="eyedropperPreview" style="width: 200px; height: 200px; border-radius: 20px; margin: 0 auto 24px; background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2)); border: 2px dashed var(--border);"></div>
+          
+          <button class="btn btn-primary btn-lg" id="startEyedropper">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20.59 4.41a2 2 0 0 1 0 2.83l-1.17 1.17-4.24-4.24 1.17-1.17a2 2 0 0 1 2.83 0l1.41 1.41z"/>
+              <path d="M4 20l4.24-4.24 4.24 4.24L8 24l-4-4z"/>
+              <path d="M15.18 8.59L8.59 15.18"/>
+            </svg>
+            Start Eyedropper
+          </button>
+
+          <div id="eyedropperResult" style="display: none;" class="mt-8 p-6 rounded-xl" style="background: var(--bg-card-hover)">
+            <h3 class="text-lg font-semibold mb-4">Picked Color</h3>
+            <div class="flex justify-center items-center gap-6">
+              <div id="eyedropperColorPreview" style="width: 80px; height: 80px; border-radius: 16px;"></div>
+              <div class="text-left">
+                <div class="font-mono text-2xl font-bold" id="eyedropperHex"></div>
+                <button class="btn btn-secondary mt-2" id="copyEyedropper">Copy to Clipboard</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="eyedropperUnsupported" style="display: none;" class="mt-6 p-4 rounded-xl" style="background: rgba(255, 107, 107, 0.1); border: 1px solid var(--accent-secondary)">
+            <p style="color: var(--accent-secondary)">Your browser doesn't support the EyeDropper API. Please use Chrome or Edge.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PALETTE GENERATOR PAGE -->
+    <div class="page" id="page-palette">
+      <div class="max-w-5xl mx-auto">
+        <header class="mb-8">
+          <h1 class="text-4xl font-bold mb-2" style="font-family: 'Space Grotesk'">Palette Generator</h1>
+          <p class="text-lg" style="color: var(--fg-muted)">Generate beautiful color palettes from a base color</p>
+        </header>
+
+        <div class="card">
+          <div class="grid md:grid-cols-2 gap-8 mb-8">
+            <div>
+              <label class="block text-sm font-medium mb-2">Base Color</label>
+              <input type="color" id="paletteBaseColor" value="#6495ed" class="w-full h-14">
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-2">Palette Type</label>
+              <select id="paletteType" class="input-field">
+                <option value="complementary">Complementary</option>
+                <option value="analogous">Analogous</option>
+                <option value="triadic">Triadic</option>
+                <option value="monochromatic">Monochromatic</option>
+              </select>
+            </div>
+          </div>
+
+          <button class="btn btn-primary" id="generatePalette">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.3"/>
+            </svg>
+            Generate Palette
+          </button>
+
+          <div id="paletteOutput" class="palette-output mt-8"></div>
+
+          <div id="paletteExport" style="display: none;" class="mt-6">
+            <div class="flex gap-4 flex-wrap">
+              <button class="btn btn-secondary" id="exportCss">Export as CSS</button>
+              <button class="btn btn-secondary" id="exportJson">Export as JSON</button>
+              <button class="btn btn-primary" id="savePalette">Save Palette</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTRAST CHECKER PAGE -->
+    <div class="page" id="page-contrast">
+      <div class="max-w-4xl mx-auto">
+        <header class="mb-8">
+          <h1 class="text-4xl font-bold mb-2" style="font-family: 'Space Grotesk'">Contrast Checker</h1>
+          <p class="text-lg" style="color: var(--fg-muted)">Check WCAG color contrast for accessibility</p>
+        </header>
+
+        <div class="card">
+          <div class="grid md:grid-cols-2 gap-8 mb-8">
+            <div>
+              <label class="block text-sm font-medium mb-2">Background Color</label>
+              <input type="color" id="contrastBg" value="#1a1a2e" class="w-full h-14">
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-2">Text Color</label>
+              <input type="color" id="contrastText" value="#ffffff" class="w-full h-14">
+            </div>
+          </div>
+
+          <div class="contrast-preview" id="contrastPreview" style="background: #1a1a2e; color: #ffffff;">
+            <h3>Sample Text</h3>
+            <p class="text-sm" style="opacity: 0.8">This is how your text will appear</p>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="text-center p-6 rounded-xl" style="background: var(--bg-card-hover)">
+              <div class="text-3xl font-bold mb-2" id="contrastRatio" style="font-family: 'Space Grotesk'">14.8:1</div>
+              <div class="text-sm" style="color: var(--fg-muted)">Contrast Ratio</div>
+            </div>
+            <div class="text-center p-6 rounded-xl" style="background: var(--bg-card-hover)">
+              <div id="wcagAA" class="wcag-badge wcag-pass mx-auto mb-2">AA Pass</div>
+              <div class="text-sm" style="color: var(--fg-muted)">Normal Text (4.5:1)</div>
+            </div>
+            <div class="text-center p-6 rounded-xl" style="background: var(--bg-card-hover)">
+              <div id="wcagAAA" class="wcag-badge wcag-pass mx-auto mb-2">AAA Pass</div>
+              <div class="text-sm" style="color: var(--fg-muted)">Normal Text (7:1)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GAMES PAGE -->
+    <div class="page" id="page-games">
+      <div class="max-w-5xl mx-auto">
+        <header class="mb-8">
+          <h1 class="text-4xl font-bold mb-2" style="font-family: 'Space Grotesk'">Fun Mode</h1>
+          <p class="text-lg" style="color: var(--fg-muted)">Challenge yourself with color games</p>
+        </header>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="game-card" data-game="detective">
+            <div class="game-icon" style="background: linear-gradient(135deg, #ff6b6b, #ee5a5a)">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="M21 21l-4.35-4.35"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Color Detective</h3>
+            <p class="text-sm" style="color: var(--fg-muted)">Guess the color from clues</p>
+          </div>
+
+          <div class="game-card" data-game="reflex">
+            <div class="game-icon" style="background: linear-gradient(135deg, #00d4aa, #00a88a)">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Color Reflex</h3>
+            <p class="text-sm" style="color: var(--fg-muted)">Fast color recognition challenge</p>
+          </div>
+
+          <div class="game-card" data-game="memory">
+            <div class="game-icon" style="background: linear-gradient(135deg, #7c5cff, #6347d9)">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+                <path d="M12 2a10 10 0 1 0 10 10H12V2z"/>
+                <path d="M12 2a10 10 0 0 1 10 10"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Memory Game</h3>
+            <p class="text-sm" style="color: var(--fg-muted)">Remember the color sequence</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SAVED COLORS PAGE -->
+    <div class="page" id="page-saved">
+      <div class="max-w-5xl mx-auto">
+        <header class="mb-8 flex justify-between items-center flex-wrap gap-4">
+          <div>
+            <h1 class="text-4xl font-bold mb-2" style="font-family: 'Space Grotesk'">Saved Colors</h1>
+            <p class="text-lg" style="color: var(--fg-muted)">Your personal color library</p>
+          </div>
+          <button class="btn btn-danger" id="clearAllColors" style="display: none;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="3 6 5 6 21 6"/>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+            </svg>
+            Clear All
+          </button>
+        </header>
+
+        <div id="savedColorsEmpty" class="card text-center py-16">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--fg-muted)" stroke-width="1.5" class="mx-auto mb-4">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+          </svg>
+          <h3 class="text-xl font-semibold mb-2">No saved colors yet</h3>
+          <p style="color: var(--fg-muted)">Colors you save will appear here</p>
+        </div>
+
+        <div id="savedColorsGrid" class="saved-grid" style="display: none;"></div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Full Screen Game Modal -->
+  <div class="game-modal" id="gameModal">
+    <div class="game-modal-content">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold" id="gameTitle" style="font-family: 'Space Grotesk'"></h2>
+        <button class="btn btn-secondary" id="closeGame" style="padding: 8px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div id="gameContent"></div>
+    </div>
+  </div>
+
+  <!-- Game Result Popup -->
+  <div class="game-result" id="gameResult">
+    <div class="result-content">
+      <div class="result-emoji" id="resultEmoji"></div>
+      <div class="result-text" id="resultText"></div>
+      <div class="result-buttons" id="resultButtons"></div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+ <script src="script.js"></script>
+</body>
+</html>
