@@ -1,4 +1,4 @@
-<script>
+
     // ===== INITIALIZATION =====
     const state = {
       currentPage: 'home',
@@ -1336,4 +1336,4 @@
         }
       });
     });
-  </script>
+ 
