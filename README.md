@@ -12,3 +12,10 @@ Users can adjust Hue, Saturation, and Lightness sliders to generate colors in re
 -  Save and manage colors  
 -  Light/Dark UI toggle  
 -  Fun interactive mode
+
+  **Tech Stack**
+- HTML  
+- CSS  
+- JavaScript
+
+  🔗 GitHub Repo: https://github.com/vijaya-nila/Color-Craft
